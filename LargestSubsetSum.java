@@ -4,14 +4,14 @@ public class LargestSubsetSum {
 
 	static long[] maxSubsetSum(int[] k) {
 		long[] result = new long[k.length];
-		for (int c = 0; c < k.length; c++) {
-			int sum = 1;
-			for (int i = 2; i <= k[c]; i++) {
-				while (k[c] % i == 0) {
-					sum += k[c];
-					k[c] = k[c] / i;
+		for (int c = 0; c <= k.length-1; c++) {
+			int sum = 0;
+			for (int i = 1; i <= k[c]/2; i++) {
+				if (k[c] % i == 0) {
+					sum=sum+i;
 				}
 			}
+			sum+=k[c];
 			result[c] = sum;
 		}
 		return result;
